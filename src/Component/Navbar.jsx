@@ -46,7 +46,7 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">ToDo Task</a>
+        <Link to="/" className="btn btn-ghost text-xl">ToDo Task</Link>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1 space-x-3 font-bold">
