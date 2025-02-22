@@ -12,7 +12,7 @@ export default function AddTask() {
       description: e.target.description.value,
       category: e.target.category.value
     };
-    const {data} = await axios.post('https://todo-server-3h3o.onrender.com/tasks', task)
+    const {data} = await axios.post('http://localhost:7000/tasks', task)
     console.log(data);
     navigate('/')
   };

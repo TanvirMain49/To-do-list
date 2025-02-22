@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 export default function Navbar() {
+  const { user, singInGoogle, logOut } = useContext(AuthContext);
+  console.log(user)
   return (
     <div className="navbar bg-base-100 w-full shadow-xl px-10">
       <div className="navbar-start">
@@ -46,12 +49,52 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl">ToDo Task</Link>
+        <Link to="/" className="btn btn-ghost text-xl">
+          ToDo Task
+        </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1 space-x-3 font-bold">
-          <Link to='/add-task'>Add Task</Link>
-          <Link to='/log-in'>Signup</Link>
+          <Link to="/add-task">
+            <button className="btn">Add Task</button>
+          </Link>
+          {user ? (
+            <>
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full">
+                    <img
+                      alt="Tailwind CSS Navbar component"
+                      src={user?.photoURL}
+                    />
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                >
+                  <li>
+                    <a className="justify-between">
+                      {user.displayName}
+                    </a>
+                  </li>
+                  <li>
+                    <button
+                    
+                    onClick={()=>logOut()}>logOut</button>
+                  </li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            <button onClick={() => singInGoogle()} className="btn">
+              Sign up
+            </button>
+          )}
         </ul>
       </div>
     </div>

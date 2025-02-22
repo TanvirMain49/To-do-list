@@ -2,7 +2,7 @@ import React from "react";
 import Task from "./Task";
 import { useDroppable } from "@dnd-kit/core";
 
-export default function Columns({ column, tasks }) {
+export default function Columns({ column, tasks, handleDelete }) {
   const { setNodeRef } = useDroppable({
     id: column.id,
   });
@@ -12,7 +12,7 @@ export default function Columns({ column, tasks }) {
         {column.title}
       </h1>
       {tasks.map((item) => (
-        <Task key={item._id} task={item} />
+        <Task key={item._id} task={item} handleDelete={handleDelete} />
       ))}
     </div>
   );
