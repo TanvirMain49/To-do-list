@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "dragon-news-b0fcf"
-  }
+    "default": "to-do-list-220c9",
+    "dist": "to-do-list-220c9"
+  },
+  "targets": {},
+  "etags": {}
 }

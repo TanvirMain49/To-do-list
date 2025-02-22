@@ -9,6 +9,7 @@ const socket = io("http://localhost:7000");
 
 export default function Home() {
   const [tasks, setTasks] = useState([]);
+  console.log(tasks)
 
   // Fetch all tasks
   const getAllTask = async () => {
@@ -101,7 +102,6 @@ export default function Home() {
 
   // Handle Delete Task
   const handleDelete = (id) => {
-    console.log("kam korer", id)
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
